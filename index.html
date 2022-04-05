@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">   
+    <script type="text/javascript" src="javascript\scripts.js"></script>
+    <title>HIIT Timer</title>
+</head>
+<body>
+    <div id="content" class="page-container">
+        <div id="page1" class="operations-container">
+            <form name="form-input" >
+
+                <label>Sessions</label>
+                <input id="bt-hiit-sessions" type="number" value="1" min="1" max="24" autofocus>
+
+                <div>
+                <label>Warmup</label>
+                <input min="0" max="5" id="warmup-min" type="number" placeholder="Minutes">
+                <input min="0" max="60" id="warmup-sec" type="number" placeholder="Seconds">
+                </div>
+
+                <div>
+                <label>Run</label>
+                <input min="0" max="1" id="run-min" type="number" placeholder="Minutes">
+                <input min="0" max="60" id="run-sec" type="number" placeholder="Seconds">
+                </div>
+
+                <div>
+                <label>Rest</label>
+                <input min="0" max="2" id="rest-min" type="number" placeholder="Minutes">
+                <input min="0" max="60" id="rest-sec" type="number" placeholder="Seconds">
+                </div>
+
+                <div>
+                <label>Cooldown</label>
+                <input min="0" max="5" id="cool-min" type="number" placeholder="Minutes">
+                <input min="0" max="60" id="cool-sec" type="number" placeholder="Seconds">
+                </div>
+
+                </form>
+        </div>
+
+        <div id="page2" class="hiit-container">
+            <div class="rounds">
+                <p id="current_round" type="number">0</p><p class="f_slash">/</p><p id="total_rounds" type="number">0</p>
+            </div>
+            <div class="current-time">
+                <p id="current_seconds">0</p>
+            </div>
+            <div class="play-or-pause"></div>
+            <div class="buttons">
+                <button id="start-timer" onclick="start()">Start</button>
+                <button id="pause-timer" onclick="pauseClock()">Pause</button>
+                <button id="reset-timer" onclick="hideClock()">Reset</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
