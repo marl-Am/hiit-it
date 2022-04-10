@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="demo.css">
+    <script type="text/javascript" src="demo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="application">
+
+        <div class="header">
+            <h1>HIIT TIMER</h1>
+        </div>
+
+        <div id="page1" class="pages">
+            <p style="float: left;" class="controls">
+            <form id="myForm">
+
+                <div display: table>
+                    <span>
+                        <label display: table-cell>Sessions</label>
+                        <input display: table-cell id="sessions" type="number" value="1" min="1" max="24" autofocus>
+                    </span>
+                </div>
+
+                <div display: table>
+                    <span>
+                        <label display: table-cell>Warmup</label>
+                        <input display: table-cell min="0" max="5" id="warmUpMin" type="number" placeholder="Minutes"
+                            value="1">
+                        <input display: table-cell min="0" max="60" id="warmUpSec" type="number" placeholder="Seconds"
+                            value="0">
+                    </span>
+                </div>
+
+                <div display: table>
+                    <span>
+                        <label display: table-cell>Run</label>
+                        <input display: table-cell min="0" max="1" id="runMin" type="number" placeholder="Minutes"
+                            value="1">
+                        <input display: table-cell min="0" max="60" id="runSec" type="number" placeholder="Seconds"
+                            value="0">
+                    </span>
+                </div>
+
+                <div display: table>
+                    <span>
+                        <label display: table-cell>Rest</label>
+                        <input display: table-cell min="0" max="2" id="restMin" type="number" placeholder="Minutes"
+                            value="1">
+                        <input display: table-cell min="0" max="60" id="restSec" type="number" placeholder="Seconds"
+                            value="0">
+                    </span>
+                </div>
+
+                <div display: table>
+                    <span>
+                        <label display: table-cell>Cooldown</label>
+                        <input display: table-cell min="0" max="5" id="coolMin" type="number" placeholder="Minutes"
+                            value="1">
+                        <input display: table-cell min="0" max="60" id="coolSec" type="number" placeholder="Seconds"
+                            value="0">
+                    </span>
+                </div>
+
+            </form>
+            </p>
+        </div>
+
+        <div id="page2" class="pages">
+            <p class="clock">
+            <p id="status" type="text"></p>
+            <p id="currentRoundNumber" type="text"></p>
+            <p id="timer" type="number"></p>
+            </p>
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+        </div>
+
+        <!-- <div class="footer">
+            <h1>Footer</h1>
+        </div> -->
+
+    </div>
+
+</body>
+
+</html>
