@@ -1,0 +1,103 @@
+/* @font-face {
+    font-family: 'Roboto Mono';
+
+    src: url('C:\Users\marlo\Documents\hiit\src\font\static\RobotoMono-Bold.ttf');
+
+} */
+
+body {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.header {
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    justify-content: space-between;
+    background: white;
+}
+
+input {
+    background-color: whitesmoke;
+    width: 68px;
+}
+
+.controls {
+    text-align: center;
+}
+
+.clocks {
+    text-align: center;
+}
+
+p[type=text] {
+    flex: justify;
+    text-align: center;
+    font-size: 150%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ul {
+    display: flex;
+    list-style-type: none;
+    width: 500px;
+    justify-content: space-around;
+    font-size: 30px;
+}
+
+li {
+    text-decoration: none;
+} */
+
+/* Solid border */
+hr.solid {
+    border-top: 3px solid black;
+}
+
+button {
+    padding: 15px 25px;
+    border: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgb(0, 206, 209);
+}
+
+button:hover {
+    cursor: pointer;
+    background: rgb(255, 127, 80);
+}
+
+p {
+    font-size: 100px;
+    font-weight: 300;
+}
+
+/*Anything under or equal 1000px, make hamburger icon visible*/
+@media only screen and (max-width: 1000px) {
+    /* .hamburger {
+        display: block;
+        border: 0;
+        background-color: transparent;
+        color: white;
+        font-size: 30px;
+        margin: 20px;
+        align-self: flex-end;
+    } */
+
+    nav {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        background-color: #2b2c38;
+    }
+
+    input {
+        background-color: whitesmoke;
+        width: 68px;
+        display: block;
+        margin: 0 auto;
+    }
+}
