@@ -3,8 +3,8 @@ window.onload = function () {
     var timeIntervalQueue = [];
     var timeIntervalStatusQueue = [];
 
-    var bellAudio;
-    var countDownAudio;
+    var bellAudio = new Audio('bells.wav');
+    var countDownAudio = new Audio('countdown.wav');
 
     var warmupString = "WARMUP";
     var runString = "RUN";
@@ -24,6 +24,7 @@ window.onload = function () {
 
     var roundName = document.getElementById("round-name");
     var timer = document.getElementById("timer");
+    var page1 = document.getElementById("page1");
 
     var timeInterval;
     var time;
@@ -38,7 +39,6 @@ window.onload = function () {
     var resetBtn = document.getElementById("reset");
 
     startBtn.onclick = function () {
-
         if (isTimerRunning) {
 
             warmup = parseInt(warmupSecs.value, 10);
@@ -47,46 +47,75 @@ window.onload = function () {
             cooldown = parseInt(cooldownSecs.value, 10);
             rounds = parseInt(sessions.value, 10);
 
-            // Default input
-            if(warmupSecs.value.length == 0) warmup = 60;
-            if(runSecs.value.length == 0) run = 30;
-            if(restSecs.value.length == 0) rest = 15;
-            if(cooldownSecs.value.length == 0) cooldown = 60;
+            // Default inputs if the inputs are left empty
+            if (warmupSecs.value.length == 0) warmup = 60;
+            if (runSecs.value.length == 0) run = 30;
+            if (restSecs.value.length == 0) rest = 15;
+            if (cooldownSecs.value.length == 0) cooldown = 60;
 
             totalTime = warmup + cooldown + (run + rest) * rounds;
-
+            // hide start button
+            startBtn.style.display = "none";
             populateQueues();
             playBell();
             hidePage1();
             focusOnClock();
             turnOnClock();
         }
-
     }
 
     pauseBtn.onclick = function () {
-        temp = time;
-        stopTimer();
-        bellAudio.pause();
-        countDownAudio.pause();
-        isTimerRunning = false;
+        if (timeInterval === -1) {
+            pauseBtn.innerHTML = "Pause";
+
+            timeInterval = setInterval(countDownClock, 1000);
+            if (!(bellAudio.pause()) && !(bellAudio == null)) {
+                bellAudio.pause();
+                bellAudio.currentTime = 0;
+            }
+            if (!(countDownAudio.pause()) && !(countDownAudio == null)) {
+                countDownAudio.pause();
+                countDownAudio.currentTime = 0;
+            }
+
+
+        }
+        else {
+            pauseBtn.innerHTML = "Resume";
+            clearInterval(timeInterval);
+            timeInterval = -1;
+            if (!(bellAudio == null) && bellAudio.pause()) {
+                bellAudio.play();
+            }
+            if (!(countDownAudio == null) && countDownAudio.pause()) {
+                countDownAudio.play();
+            }
+        }
     }
 
     resetBtn.onclick = function () {
-        bellAudio.pause();
-        bellAudio.currentTime = 0;
+        // Stop hiding page1 which shows the controls for the clock
+        if (page1.style.display === "none") {
+            page1.style.display = "block";
+        }
+        if (startBtn.style.display === "none") {
+            startBtn.style.display = "inline-block";
+        }
 
-        countDownAudio.pause();
-        countDownAudio.currentTime = 0;
         stopTimer();
-
         document.getElementById("control-form").reset();
         roundName.innerHTML = "";
         timer.innerHTML = "";
 
-        // Stop hiding page1 which shows the controls for the clock
-        if (page1.style.display === "none") {
-            page1.style.display = "block";
+        timeIntervalQueue.length = 0;
+        timeIntervalStatusQueue.length = 0;
+
+        if (!(bellAudio.pause()) || !(countDownAudio.pause())) {
+            bellAudio.pause();
+            bellAudio.currentTime = 0;
+
+            countDownAudio.pause();
+            countDownAudio.currentTime = 0;
         }
     }
 
@@ -108,9 +137,6 @@ window.onload = function () {
         time = timeIntervalQueue.shift();
         roundName.innerHTML = timeIntervalStatusQueue.shift();
 
-        // if ( isTimerRunning === false) {
-        //     timeInterval = setInterval(runCountDown(temp), 1000);
-        // }
         if (isTimerRunning) {
             isTimerRunning = false;
             timeInterval = setInterval(countDownClock, 1000);
@@ -125,25 +151,6 @@ window.onload = function () {
     }
 
     function countDownClock() {
-        // if (temp){
-        //     time = temp;
-        //     time -= 1;
-        //     renderTime();
-        //     if (time === 11) {
-        //         playCountDown();
-        //     }
-        //     else if (time === 0 && timeIntervalQueue.length > 0 && timeIntervalStatusQueue.length > 0){
-        //         time = timeIntervalQueue.shift();
-        //         roundName.innerHTML = timeIntervalStatusQueue.shift();
-        //         playBell();
-        //     }
-        //     else if (time === 0 && timeIntervalQueue.length === 0 && timeIntervalStatusQueue.length === 0) {
-        //         stopTimer();
-        //         playBell();
-        //         showTotalTime();
-        //     }
-        // }
-
         time -= 1;
         renderTime();
         if (time === 11) {
@@ -159,7 +166,6 @@ window.onload = function () {
             playBell();
             showTotalTime();
         }
-
     }
 
     function showTotalTime() {
@@ -184,7 +190,7 @@ window.onload = function () {
 
     function hidePage1() {
         if (page1.style.display === "none") {
-            page1.style.display = "block";
+            page1.style.display = "inline-block";
         }
         else {
             page1.style.display = "none";
@@ -198,7 +204,6 @@ window.onload = function () {
 
     /*Audio files*/
     function playBell() {
-        bellAudio = new Audio('bells.wav');
         try {
             bellAudio.play();
         } catch (err) {
@@ -207,7 +212,6 @@ window.onload = function () {
     }
 
     function playCountDown() {
-        countDownAudio = new Audio('countdown.wav');
         try {
             countDownAudio.play();
         } catch (err) {
