@@ -1,5 +1,7 @@
 body {
     font-family: 'Roboto Mono', monospace;
+    background-color: black;
+    color: white;
 }
 
 .header {
@@ -7,17 +9,17 @@ body {
     font-size: 20px;
     text-align: center;
     justify-content: space-between;
-    background: white;
+    background: black;
 }
 
 input {
-    background-color: whitesmoke;
+    background-color: black;
     width: 68px;
 }
 
 /* if inputs between [min,max], the box background color is green */
 input:in-range {
-    background-color: rgba(0, 255, 0, 0.25);
+    background-color: white;
 }
 
 /* if inputs not [min,max], the box background color is red */
@@ -46,7 +48,7 @@ a {
 
 /* Solid border */
 hr.solid {
-    border-top: 3px solid black;
+    border-top: 3px solid white;
 }
 
 button {
@@ -59,7 +61,8 @@ button {
 
 button:hover {
     cursor: pointer;
-    background: rgb(255, 127, 80);
+    background: white;
+    color: black;
 }
 
 p {
@@ -73,11 +76,11 @@ p {
     nav {
         align-items: flex-start;
         flex-direction: column-reverse;
-        background-color: #2b2c38;
+        background-color: white;
     }
 
     input {
-        background-color: whitesmoke;
+        background-color: black;
         width: 68px;
         display: block;
         margin: 0 auto;
