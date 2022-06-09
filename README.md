@@ -2,6 +2,7 @@
 A finished High-intensity Interval Training Timer hosted on the web.
 
 The homepage should look like this.
+
 ![home](images/home.png)
 
 Enter the number of sessions (run and rest periods), then the amount in seconds you wish to spend on your Warmup, Run, Rest, or Cooldown. Press start. You can pause the countdown or reset the inputs.
