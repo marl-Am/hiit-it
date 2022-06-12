@@ -1,15 +1,15 @@
 # hiit-it
-A finished High-intensity Interval Training Timer hosted on the web.
+A High-intensity Interval Training Timer hosted on the web.
 
 The homepage should look like this.
 
 ![home](images/home.png)
 
-Enter the number of sessions (run and rest periods), then the amount in seconds you wish to spend on your Warmup, Run, Rest, or Cooldown. Press start. You can pause the countdown or reset the inputs.
+Enter the number of sessions (run and rest periods), then the amount in seconds you wish to spend on your Warmup, Run, Rest, or Cooldown. Press start. If the inputs you entered are invalid, the input field will change to a red color.
 
 ![enter_seconds](images/enter_seconds.png)
 
-The warmup period begins and the clock ticks down to zero.
+You can pause the countdown or reset the inputs. The warmup period begins and the clock ticks down to zero.
 When you reach 10 seconds a voice starts counting down, and after reaching zero a bell is rung.
 
 ![warmup](images/warmup.png)
